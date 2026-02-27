@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groan Tube</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      background: #000;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fullscreen viewer */
+    .lightbox {
+      position: fixed;
+      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+    }
+
+    .lightbox:active {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>Groan Tube</header>
+
+<div class="gallery">
+  <!-- Replace these image links with your own -->
+  <img src="https://picsum.photos/400/400?1" onclick="openImage(this.src)">
+  <img src="https://picsum.photos/400/400?2" onclick="openImage(this.src)">
+  <img src="https://picsum.photos/400/400?3" onclick="openImage(this.src)">
+  <img src="https://picsum.photos/400/400?4" onclick="openImage(this.src)">
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeImage()">
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+  function openImage(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  function closeImage() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
